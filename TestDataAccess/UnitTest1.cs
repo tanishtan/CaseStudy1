@@ -43,7 +43,7 @@ namespace TestDataAccess
         public void RemoveById()
         {
             int exp = repo.GetAll().Count();
-            repo.RemoveById(8);
+            repo.RemoveById(26);
             int up = repo.GetAll().Count();
             Assert.AreEqual(exp - 1, up);
             
@@ -136,5 +136,7 @@ namespace TestDataAccess
             Assert.IsNotNull(result);
             Assert.AreNotEqual(100, user.UserId);
         }
+
     }
+     
 }

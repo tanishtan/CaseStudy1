@@ -15,4 +15,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess.DataAccess\DataAccess.DataAccess.csproj" />
+    <ProjectReference Include="..\DataAccess.Entities\DataAccess.Entities.csproj" />
+    <ProjectReference Include="..\UserRoleProcess\UserRoleProcess.csproj" />
+  </ItemGroup>
+
 </Project>

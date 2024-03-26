@@ -30,29 +30,33 @@ namespace DataAccess.DataAccess
 
         public void RemoveById(int id)
         {
+            var role = FindById(id);
+            dbContext.ChangeTracker.Clear();
+            dbContext.ChangeTracker.DetectChanges();
 
+            if (role is not null)
+            {
 
-            dbContext.Roles.Where(c => c.RoleId == id && c.IsActive == true)
+                dbContext.Roles.Where(c => c.RoleId == id && c.IsActive == true)
                 .ExecuteUpdate(setters =>
             setters.SetProperty(p => p.IsActive, false));
-
-
+            }
 
         }
 
         public void Upsert(Role entity)
         {
-            var usr = FindById(entity.RoleId);
+            var role = FindById(entity.RoleId);
+            dbContext.ChangeTracker.Clear();
+            dbContext.ChangeTracker.DetectChanges();
 
-
-
-            dbContext.Roles.Where(c => c.IsActive == true && c.RoleId == entity.RoleId)
+            if (role != null)
+            {
+                dbContext.Roles.Where(c => c.IsActive == true && c.RoleId == entity.RoleId)
                 .ExecuteUpdate(setters =>
             setters.SetProperty(p => p.RoleName, entity.RoleName)
-            .SetProperty(p => p.RoleDescription, entity.RoleDescription)
-            );
-
-            dbContext.SaveChanges();
+            .SetProperty(p => p.RoleDescription, entity.RoleDescription));
+            }
         }
     }
 }
