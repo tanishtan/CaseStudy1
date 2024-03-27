@@ -9,8 +9,8 @@ namespace UserRoleProcess
 {
     public class RoleFactoryProcess
     {
-        
-        public static Role CreateNewAccount(string RoleName, string RoleDescription,bool IsActive)
+
+        public static Role CreateNewAccount(string RoleName, string RoleDescription, bool IsActive)
         {
             if (RoleName.Length >= 5)
             {
@@ -20,8 +20,7 @@ namespace UserRoleProcess
                 role.RoleName = RoleName;
                 return role;
             }
-            return null;
+            throw new NullReferenceException();
         }
-
     }
 }

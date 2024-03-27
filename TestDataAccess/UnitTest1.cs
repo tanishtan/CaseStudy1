@@ -1,5 +1,6 @@
 using CaseStudy1.DataAccess;
 using CaseStudy1.DataAccess.Repositories;
+using DataAccess.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 
@@ -9,6 +10,7 @@ namespace TestDataAccess
     public class UnitTest1
     {
         IRepository<User, int> repo = new UserImplementation();
+        IRepository<Role,int> repo2 = new RoleImplementation();
         [TestMethod]
         public void AddNew()
         {
@@ -136,7 +138,14 @@ namespace TestDataAccess
             Assert.IsNotNull(result);
             Assert.AreNotEqual(100, user.UserId);
         }
+        [TestMethod]
+        public void CheckForRoleId_Throws_NullReferenceException()
+        {
+            int id = 100;
+            var repo1 = new RoleImplementation();
+            repo1.FindById(id);
+        }
 
     }
-     
+
 }

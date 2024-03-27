@@ -60,9 +60,20 @@ namespace CaseStudy1
                 }
                 else if(choice==2)
                 {
-                    
+
+                    int id = 0;
                     Console.WriteLine("Enter the id to be found");
-                    int id = int.Parse(Console.ReadLine());
+                    try
+                    {
+                        int.TryParse(Console.ReadLine(),out id);
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("Enter a valid number");
+                        Console.ReadKey();
+                        ManagingUser();
+                    }
                     FindUserById(id);
                     Console.ReadKey();
                 }
@@ -85,8 +96,26 @@ namespace CaseStudy1
                     
                     Console.WriteLine("Enter the user details to be updated");
                     Console.WriteLine("Enter the Id");
-                    int id = int.Parse(Console.ReadLine());
-                    var user = process.FindByIdUser(id);
+                    int id = 0;
+                    try
+                    {
+                        id = int.Parse(Console.ReadLine());
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine($"{ex.Message}");
+                        Console.WriteLine("Enter a number");
+                        ManagingRole();
+                    }
+                    try
+                    {
+                        var user = process.FindByIdUser(id);
+                    if (user == null)
+                    {
+                        Console.WriteLine("Id not found");
+                        ManagingUser();
+                    }
+                    
                     Console.WriteLine("Enter the UserName");
                     string username = Console.ReadLine();
                     if (username.Length == 0)
@@ -103,14 +132,28 @@ namespace CaseStudy1
                     string password = Console.ReadLine();
                     if (password.Length == 0)
                         password = user.Password;
-                    UpdateUser(id,username, firstname, lastname, password);
+                    
+                        UpdateUser(id, username, firstname, lastname, password);
+                    }
+                    catch( Exception ex )
+                    {
+                        Console.WriteLine("User cannot be updated");
+                    }
                     Console.ReadKey();
                 }
                 else if(choice==5)
                 {
-                    
+                    int id = 0;
                     Console.WriteLine("Enter the id to be removed");
-                    int id = int.Parse(Console.ReadLine());
+                    try
+                    {
+                        id = int.Parse(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Id not found");
+                        ManagingUser();
+                    }
                     RemoveUserId(id);
                     Console.ReadKey();
                 }
@@ -132,30 +175,69 @@ namespace CaseStudy1
 
         public static void FindUserById(int id)
         {
-            var user = process.FindByIdUser(id);
-            Console.WriteLine($"UserId: {user.UserId}");
-            Console.WriteLine($"UserName: {user.UserName}");
-            Console.WriteLine($"FirstName: {user.Firstname}");
-            Console.WriteLine($"LastName: {user.Lastname}");
-            Console.WriteLine();    
+            try
+            {
+                var user = process.FindByIdUser(id);
+                if(user == null)
+                {
+                    Console.WriteLine("Id not found");
+                    ManagingUser();
+                }
+                Console.WriteLine($"UserId: {user.UserId}");
+                Console.WriteLine($"UserName: {user.UserName}");
+                Console.WriteLine($"FirstName: {user.Firstname}");
+                Console.WriteLine($"LastName: {user.Lastname}");
+                Console.WriteLine();
+                Console.ReadKey(true);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("You did not enter a number");
+                
+            }
+            
         }
 
         public static void AddingNewUser(string username,string firstname,string lastname, string password)
         {
-            process.CreateNewUser(username, firstname, lastname, password, true);
-            Console.WriteLine("User Created");
+            try
+            {
+                process.CreateNewUser(username, firstname, lastname, password, true);
+                Console.WriteLine("User Created");
+            }
+            catch(NullReferenceException ex) 
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Some credentials are empty");
+            }
         }
 
 
         public static void UpdateUser(int id, string username, string firstname, string lastname, string password)
         {
-            process.UpdateUser(id,username,firstname,lastname,password,true);
-            Console.WriteLine("Updated");
+            try
+            {
+                process.UpdateUser(id, username, firstname, lastname, password, true);
+                Console.WriteLine("Updated");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Give all valid credentials");
+            }
         }
 
         public static void RemoveUserId(int id)
         {
-            process.RemoveByIdUser(id);
+            try
+            {
+                process.RemoveByIdUser(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             
             Console.WriteLine("The Id is deleted");
         }
@@ -206,7 +288,18 @@ namespace CaseStudy1
 
                     Console.WriteLine("Enter the role details to be updated");
                     Console.WriteLine("Enter the Id");
-                    int id = int.Parse(Console.ReadLine());
+                    int id=0;
+                    try
+                    {
+                        id = int.Parse(Console.ReadLine());
+                    }
+                    catch(FormatException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("The Id must be an integer");
+                        Console.ReadKey();
+                        ManagingRole();
+                    }
                     var role = roleProcess.FindByIdRole(id);
                     Console.WriteLine("Enter the RoleName");
                     string roleName = Console.ReadLine();
@@ -222,11 +315,18 @@ namespace CaseStudy1
                 }
                 else if (choice == 5)
                 {
-
-                    Console.WriteLine("Enter the id to be removed");
-                    int id = int.Parse(Console.ReadLine());
-                    RemoveRoleId(id);
-                    Console.ReadKey();
+                    try
+                    {
+                        Console.WriteLine("Enter the id to be removed");
+                        int id = int.Parse(Console.ReadLine());
+                        RemoveRoleId(id);
+                        Console.ReadKey();
+                    }
+                    catch (FormatException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        Console.ReadKey();
+                    }
                 }
                 
             } while (choice != 0);
@@ -245,24 +345,54 @@ namespace CaseStudy1
 
         public static void FindRoleById(int id)
         {
-            var role = roleProcess.FindByIdRole(id);
-            Console.WriteLine($"RoleId: {role.RoleId}");
-            Console.WriteLine($"RoleName: {role.RoleName}");
-            Console.WriteLine($"RoleDescription: {role.RoleDescription}");
-            Console.WriteLine();
+            try
+            {
+                var role = roleProcess.FindByIdRole(id);
+                Console.WriteLine($"RoleId: {role.RoleId}");
+                Console.WriteLine($"RoleName: {role.RoleName}");
+                Console.WriteLine($"RoleDescription: {role.RoleDescription}");
+                Console.WriteLine();
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine($"Role with ID {id} not found.");
+                
+            }
         }
 
         public static void AddingNewRole(string roleName, string roleDescrition)
         {
-            roleProcess.CreateNewRole(roleName, roleDescrition, true);
-            Console.WriteLine("Role Created");
+            try
+            {
+                roleProcess.CreateNewRole(roleName, roleDescrition, true);
+                Console.WriteLine("Role Created");
+            }
+            catch(NullReferenceException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine($"The RoleName is a required string");
+            }
+            
         }
 
 
         public static void UpdateRole(int id, string roleName, string roleDescrition)
         {
-            roleProcess.UpdateRole(id, roleName, roleDescrition, true);
-            Console.WriteLine("Updated");
+            try
+            {
+                roleProcess.UpdateRole(id, roleName, roleDescrition, true);
+                Console.WriteLine("Updated");
+            }
+            catch(FormatException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine($"The RoleId must be an integer");
+            }
+            catch(NullReferenceException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public static void RemoveRoleId(int id)
@@ -280,7 +410,17 @@ namespace CaseStudy1
             Console.WriteLine("************** Login Management System ***********");
             Console.WriteLine("************** Manage User Role ***********");
             Console.WriteLine("Enter User Id ");
-            choice = int.Parse( Console.ReadLine() );
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Enter a valid number");
+                Console.ReadKey();
+                ManagingUserRole();
+            }
             Console.WriteLine("Roles Available");
             RoleImplementation rp = new RoleImplementation();
             var all = rp.GetAll(); 
@@ -289,29 +429,39 @@ namespace CaseStudy1
                 Console.Write($"{item.RoleName}   ");
             }
             Console.WriteLine();
-            Console.WriteLine("Enter Role Name");
-            
-            string roleName = Console.ReadLine();
-            
-            Console.WriteLine("Save this mapping Y/N");
-            string check = Console.ReadLine();
-            int id=0;
-            if(check.ToLower()=="y")
+            try
             {
-                foreach (var item in all)
+                Console.WriteLine("Enter Role Name");
+
+                string roleName = Console.ReadLine();
+
+                Console.WriteLine("Save this mapping Y/N");
+                string check = Console.ReadLine();
+                int id = 0;
+                if (check.ToLower() == "y")
                 {
-                    if (item.RoleName == roleName)
+                    foreach (var item in all)
                     {
-                        id=item.RoleId;
+                        if (item.RoleName == roleName)
+                        {
+                            id = item.RoleId;
+                        }
                     }
+
+                    process.UpdateRole(choice, id);
                 }
-                process.UpdateRole(choice, id);
+                else
+                {
+                    Console.Clear();
+                    DisplayMenuAndGetChoice();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.Clear();
-                DisplayMenuAndGetChoice();
+                Console.WriteLine(ex.Message);
+                Console.ReadKey();
             }
+            
         }
 
         static void Main(string[] args)

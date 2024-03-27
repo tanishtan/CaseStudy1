@@ -23,12 +23,26 @@ namespace UserRoleProcess
         }
         public Role FindByIdRole(int Id)
         {
-            var id = RoleRepo.FindById(Id);
-            return id;
+            try
+            {
+                var id = RoleRepo.FindById(Id);
+                return id;
+            }
+            catch(NullReferenceException ex) 
+            {
+                throw ex;
+            }
         }
         public void RemoveByIdRole(int Id)
         {
-            RoleRepo.RemoveById(Id);
+            try
+            {
+                RoleRepo.RemoveById(Id);
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
         public void UpdateRole(int id, string RoleName, string RoleDescription, bool IsActive)
         {

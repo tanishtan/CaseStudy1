@@ -20,15 +20,23 @@ namespace UserRoleProcess
             
             if (Password.Length >= 8 && Regex.IsMatch(Password, @"[0-9]") && UserName.Length >= 5)
             {
-                User user = new User();
-                user.UserName = UserName;
-                user.Firstname = FirstName;
-                user.Lastname = LastName;
-                user.Password = Password;
-                user.IsActive = IsActive;
-                return user;
+                try
+                {
+                    User user = new User();
+                    user.UserName = UserName;
+                    user.Firstname = FirstName;
+                    user.Lastname = LastName;
+                    user.Password = Password;
+                    user.IsActive = IsActive;
+                    return user;
+                }
+                catch (NullReferenceException)
+                {
+                    throw new NullReferenceException();
+                }
             }
-            return null;
+            throw new NullReferenceException();
+
         }
     }
 }

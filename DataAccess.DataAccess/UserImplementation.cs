@@ -20,7 +20,16 @@ namespace CaseStudy1.DataAccess.Repositories
 
         public User FindById(int id)
         {
-            return dbContext.Users.FirstOrDefault(c => c.IsActive==true && c.UserId == id);
+            var mes = dbContext.Users.FirstOrDefault(c => c.IsActive == true && c.UserId == id);
+
+            if (mes != null)
+            {
+                return mes;
+            }
+            else
+            {
+                throw new Exception("No");
+            }
         }
 
         public IEnumerable<User> GetAll()

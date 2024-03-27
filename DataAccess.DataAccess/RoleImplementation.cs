@@ -20,8 +20,17 @@ namespace DataAccess.DataAccess
 
         public Role FindById(int id)
         {
-            return dbContext.Roles.FirstOrDefault(c => c.IsActive == true && c.RoleId == id);
+            try
+            {
+                return dbContext.Roles.FirstOrDefault(c => c.IsActive == true && c.RoleId == id);
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException(nameof(id));
+            }
         }
+
+        
 
         public IEnumerable<Role> GetAll()
         {
@@ -30,16 +39,23 @@ namespace DataAccess.DataAccess
 
         public void RemoveById(int id)
         {
-            var role = FindById(id);
-            dbContext.ChangeTracker.Clear();
-            dbContext.ChangeTracker.DetectChanges();
-
-            if (role is not null)
+            try
             {
+                var role = FindById(id);
+                dbContext.ChangeTracker.Clear();
+                dbContext.ChangeTracker.DetectChanges();
 
-                dbContext.Roles.Where(c => c.RoleId == id && c.IsActive == true)
-                .ExecuteUpdate(setters =>
-            setters.SetProperty(p => p.IsActive, false));
+                if (role is not null)
+                {
+
+                    dbContext.Roles.Where(c => c.RoleId == id && c.IsActive == true)
+                    .ExecuteUpdate(setters =>
+                setters.SetProperty(p => p.IsActive, false));
+                }
+            }
+            catch(FormatException) 
+            {
+                throw new FormatException(nameof(id));
             }
 
         }

@@ -25,8 +25,19 @@ namespace UserRoleProcess
         }
         public User FindByIdUser(int Id)
         {
+            /*try
+            {
+                var id = UserRepo.FindById(Id);
+                return id;
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
+            return id;*/
             var id = UserRepo.FindById(Id);
-            return id;
+            if(id != null) { return id; }
+            else { return null; }
         }
         public void RemoveByIdUser(int Id) 
         {
