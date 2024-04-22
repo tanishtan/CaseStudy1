@@ -16,10 +16,10 @@ namespace TestDataAccess
         {
             int expectedResult = repo.GetAll().Count() + 1;
             var user = new User();
-            user.UserName = "Testdfasfsadfsd";
-            user.Firstname = "Testadfdss";
-            user.Lastname = "Testadfdsfdsfsasaf";
-            user.Password = "Tesas";
+            user.UserName = "Testdfasffsadfsd";
+            user.Firstname = "Testadfdass";
+            user.Lastname = "Testadfdsfadfdsfsasaf";
+            user.Password = "Tesas123";
             user.IsActive = true;
             repo.AddNew(user);
             int actualResult = repo.GetAll().Count();

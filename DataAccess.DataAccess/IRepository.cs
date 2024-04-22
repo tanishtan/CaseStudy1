@@ -15,4 +15,13 @@ namespace CaseStudy1.DataAccess.Repositories
         void Upsert(TEntity entity);
         void RemoveById(TIdentity id);
     }
+
+    public interface IRepositoryAsync<TEntity>
+    {
+        Task<IEnumerable<TEntity>> GetAll();
+        Task<TEntity> GetById(int id);
+        Task CreateNew(TEntity entity);
+        Task Update(TEntity entity);
+        Task Remove(int id);
+    }
 }

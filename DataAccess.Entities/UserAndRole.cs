@@ -21,15 +21,15 @@ namespace CaseStudy1.DataAccess
         [Required]
         [StringLength(50)]
         [MinLength(5)]
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
         [Required]
         [StringLength(50)]
         [MinLength(8)]
-        public string Password { get; set; }
+        public string? Password { get; set; }
         [StringLength(50)]
-        public string Firstname { get; set; }
+        public string? Firstname { get; set; }
         [StringLength(50)]
-        public string Lastname { get; set; }
+        public string? Lastname { get; set; }
         public bool IsActive { get; set; } = true;
 
     }
@@ -71,6 +71,8 @@ namespace CaseStudy1.DataAccess
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+
+        //public UserRoledbCntext(DbContextOptions<UserRoledbCntext> options) : base(options) { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(

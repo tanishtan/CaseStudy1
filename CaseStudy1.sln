@@ -3,23 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaseStudy1", "CaseStudy1\CaseStudy1.csproj", "{3BC9E676-EC9F-42C6-9392-6AE3B4F850A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaseStudy1", "CaseStudy1\CaseStudy1.csproj", "{3BC9E676-EC9F-42C6-9392-6AE3B4F850A1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{9242808D-3FEF-4625-972E-3D51A32C1820}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.Entities", "DataAccess.Entities\DataAccess.Entities.csproj", "{0E80825B-0AB8-4EC7-A37D-E4FBC35D65CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.Entities", "DataAccess.Entities\DataAccess.Entities.csproj", "{0E80825B-0AB8-4EC7-A37D-E4FBC35D65CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.DataAccess", "DataAccess.DataAccess\DataAccess.DataAccess.csproj", "{2B2FCEAC-0B5F-444E-930C-4D7F7AE6614B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.DataAccess", "DataAccess.DataAccess\DataAccess.DataAccess.csproj", "{2B2FCEAC-0B5F-444E-930C-4D7F7AE6614B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Process", "Process", "{9E2AD132-9A12-42D0-A0EC-C14DD40CC76C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserRoleProcess", "UserRoleProcess\UserRoleProcess.csproj", "{7BF95E6B-F8FF-4D76-8B56-C9462A1813E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRoleProcess", "UserRoleProcess\UserRoleProcess.csproj", "{7BF95E6B-F8FF-4D76-8B56-C9462A1813E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{1DEF615D-9169-4E97-823A-16C00C7FCD59}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7BA495E4-E3D5-4555-B6F1-3396312D00E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDataAccess", "TestDataAccess\TestDataAccess.csproj", "{3D4144E1-D5CA-4050-B242-A60E6E7C72DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDataAccess", "TestDataAccess\TestDataAccess.csproj", "{3D4144E1-D5CA-4050-B242-A60E6E7C72DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsersAPIService", "UsersAPIService\UsersAPIService.csproj", "{FC789BEC-96BF-4F16-96A6-AF64FFE3BB5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RolesAPIService", "RolesAPIService\RolesAPIService.csproj", "{AC6F0A5B-0286-4511-83C9-28A21CF776BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClassLibrary", "WebClassLibrary\WebClassLibrary.csproj", "{C9E0E97D-F1E6-4BA3-9DE3-958342DEB56D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAPI", "AuthenticationAPI\AuthenticationAPI.csproj", "{48E997A5-B15B-4551-9E15-0147D3C152B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaseStudyMVC", "CaseStudyMVC\CaseStudyMVC.csproj", "{2B826DB6-72F8-4FE1-91A6-92B80DBB729C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +57,26 @@ Global
 		{3D4144E1-D5CA-4050-B242-A60E6E7C72DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D4144E1-D5CA-4050-B242-A60E6E7C72DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D4144E1-D5CA-4050-B242-A60E6E7C72DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC789BEC-96BF-4F16-96A6-AF64FFE3BB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC789BEC-96BF-4F16-96A6-AF64FFE3BB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC789BEC-96BF-4F16-96A6-AF64FFE3BB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC789BEC-96BF-4F16-96A6-AF64FFE3BB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC6F0A5B-0286-4511-83C9-28A21CF776BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC6F0A5B-0286-4511-83C9-28A21CF776BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC6F0A5B-0286-4511-83C9-28A21CF776BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC6F0A5B-0286-4511-83C9-28A21CF776BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9E0E97D-F1E6-4BA3-9DE3-958342DEB56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9E0E97D-F1E6-4BA3-9DE3-958342DEB56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9E0E97D-F1E6-4BA3-9DE3-958342DEB56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9E0E97D-F1E6-4BA3-9DE3-958342DEB56D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48E997A5-B15B-4551-9E15-0147D3C152B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E997A5-B15B-4551-9E15-0147D3C152B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E997A5-B15B-4551-9E15-0147D3C152B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E997A5-B15B-4551-9E15-0147D3C152B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B826DB6-72F8-4FE1-91A6-92B80DBB729C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B826DB6-72F8-4FE1-91A6-92B80DBB729C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B826DB6-72F8-4FE1-91A6-92B80DBB729C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B826DB6-72F8-4FE1-91A6-92B80DBB729C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

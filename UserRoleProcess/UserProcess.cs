@@ -73,5 +73,19 @@ namespace UserRoleProcess
             rp.IsActive = true;
             repo.UpdateUserRole(rp);
         }
+
+        public int GetUserByUsernameAndPassword(string userName, string password)
+        {
+            UserProcess userProcess = new UserProcess();
+            var model = userProcess.GetAllUser();
+            foreach (var item in model)
+            {
+                if (item.UserName == userName && item.Password == password)
+                {
+                    return item.UserId;
+                }
+            }
+            return -1;
+        }
     }
 }
