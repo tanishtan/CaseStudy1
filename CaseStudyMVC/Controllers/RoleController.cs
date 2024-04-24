@@ -72,6 +72,7 @@ namespace CaseStudyMVC.Controllers
         [TokenCheck]
         public async Task<IActionResult> Edit()
         {
+            
             return View();
         }
 
