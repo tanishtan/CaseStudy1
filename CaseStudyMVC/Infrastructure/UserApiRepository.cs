@@ -62,5 +62,14 @@ namespace CaseStudyMVC.Infrastructure
                 baseUrl: _apiConfig.UserBaseUrl!,
                 inputObj: entity);
         }
+
+        /*public UserRole MapUserRole(int userId)
+        {
+            var result = ApiHelper.ExecuteHttpPost<User, User>(
+                url: $"{_apiConfig.UserUrl}/mapUserToRoles",
+                token: token,
+                baseUrl: _apiConfig.UserBaseUrl!,
+                inputObj: userId);
+        }*/
     }
 }

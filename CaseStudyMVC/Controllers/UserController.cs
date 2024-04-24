@@ -2,8 +2,10 @@
 using CaseStudy1.DataAccess.Repositories;
 using CaseStudyMVC.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using NuGet.Protocol.Core.Types;
+using UserRoleProcess;
 
 namespace CaseStudyMVC.Controllers
 {
@@ -84,6 +86,12 @@ namespace CaseStudyMVC.Controllers
             return RedirectToAction("List");
         }
 
-       
+        public IActionResult MapUserToRole(UserRole userRole)
+        {
+            UserProcess user = new UserProcess();
+            user.MapUserRole(userRole);
+            return View(user);
+        }
+
     }
 }

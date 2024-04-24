@@ -80,7 +80,8 @@ namespace UsersAPIService.Controllers
                 return BadRequest("Invalid user ID, role IDs, or missing data in request body");
             }
 
-            var mappedUser = _userProcess.GetRoleForUser(mapping.UserId);
+            _userProcess.MapUserRole(mapping);
+            var mappedUser = _userProcess.GetAllUser();
             return Ok(mappedUser);
             
         }

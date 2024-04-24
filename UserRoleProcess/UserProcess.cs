@@ -87,5 +87,17 @@ namespace UserRoleProcess
             }
             return -1;
         }
+
+        public void MapUserRole(UserRole userRole)
+        {
+            UserProcess userProcess = new UserProcess();
+            try
+            {
+                if (userRole.RoleId != null)
+                    userProcess.UpdateRole(userRole.UserId, userRole.RoleId);
+                else throw new Exception("Role doesnot exist");
+            }
+            catch(Exception ex) { throw ex; }
+        }
     }
 }
